@@ -1,0 +1,48 @@
+
+body {
+    background-color: #FFD04C;
+    font-family: Arial;
+    justify-content: center;
+    text-align: center;
+}
+
+h1{
+    font-size: 30px;
+    background-color: #565759;
+    color: #FFd04c;
+}
+  
+p {
+    color: black;
+    font-size: 15px;
+}
+
+select {
+    font-weight: bold;
+}
+
+label {
+    font-weight: bold;
+}
+
+div.blocos{
+    display: inline-block;
+}
+
+div.scrollmenu {
+    background-color: #565759;
+    overflow: auto;
+    white-space: nowrap;
+  }
+  
+  div.scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+  }
+  
+  div.scrollmenu a:hover {
+    background-color: #565759;
+  }

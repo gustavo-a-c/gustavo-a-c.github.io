@@ -1,0 +1,73 @@
+<!--Página de testes - 06/06/23 - Gustavo Albuquerque - NeoSolar Energia-->
+
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+ 
+<head>
+  <meta charset="utf-8">
+  <title>SISTEMA DE RECOMENDAÇÃO DE KITS HÍBRIDOS E NOBREAK V0.2 - NEOSOLAR</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<script src="script.js">
+</script>
+
+<body>
+    <h1> <br> SISTEMA DE RECOMENDAÇÃO DE KITS HÍBRIDOS E NOBREAK <br> V0.2 - NEOSOLAR <br> <br> </h1>
+    <p> 
+        O sistema recebe como inputs a tensão de saída e a potência por parte do usuário, retornando
+        os kits que mais se aproximam de sua respectiva necessidade.
+    </p>
+
+    <br>
+
+    <label for="tensao_saida">Selecione a tensão de saída:</label>
+
+    <br><br>
+
+    <select name="tensao_saida" id="tensao_saida">
+        <option value="110V">110V</option>
+        <option value="220V">220V</option>
+    </select>
+
+    <br><br>
+
+    <div class="blocos">
+        <form>
+            <label for="desc_carga">Nome da carga:</label><br><br>
+            <input type="text" id="desc_carga" name="desc_carga"><br><br>
+
+            <label for="valor_carga">Consumo:</label><br><br>
+            <input type="text" id="valor_carga" name="valor_carga"><br><br>
+
+            <button type = "button" id="botao_resetar" onclick = "resetar()"> Resetar </button>
+            <button type = "button" id="botao_soma" onclick = "soma()"> Adicionar carga </button><br><br>
+
+            <label for="carga_teste">Consumo Total:</label><br><br>
+            <p id="carga_teste" name="carga_teste">0W</p><br>
+        </form>
+    </div>
+
+    <div class="blocos">
+        <form>
+            <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+        </form>
+    </div>
+
+    <div class="blocos">
+        <form>
+            <textarea id="lista_saida" rows=18 cols=60 wrap=on readonly></textarea>
+        </form>
+    </div>
+
+
+    <br><br>
+
+    <button type = "button" id="botao_teste" onclick = "processamento()"> Buscar kits </button>
+
+    <br> <br> <br>
+
+    <div class="scrollmenu" id = "teste_scroll">
+    </div>
+      
+</body>
