@@ -73,6 +73,7 @@ function processamento(){
 }
 
  // essa aqui é a parte do documento que faz o html conseguir ler o código do arquivo
+/* ALTERACAO GITHUB______________________________________________________________
 document.addEventListener("DOMContentLoaded",
     function() {
                 var botaoTeste = document.getElementById("botao_teste");
@@ -83,6 +84,7 @@ document.addEventListener("DOMContentLoaded",
                         );
                 }
   );
+*/
 
 // FUNCAO SOMA
 
@@ -107,6 +109,7 @@ function soma(){
 }
 
  // essa aqui é a parte do documento que faz o html conseguir ler o código do arquivo
+ /* ALTERACAO GITHUB______________________________________________________________
  document.addEventListener("DOMContentLoaded",
  function() {
              var botaoTeste = document.getElementById("botao_soma");
@@ -117,6 +120,7 @@ function soma(){
                      );
              }
 );
+*/
 
 function resetar(){
     var resultado_valor = document.getElementById('carga_teste');
@@ -126,6 +130,7 @@ function resetar(){
 }
 
  // essa aqui é a parte do documento que faz o html conseguir ler o código do arquivo
+/* ALTERACAO GITHUB______________________________________________________________
  document.addEventListener("DOMContentLoaded",
  function() {
              var botaoTeste = document.getElementById("botao_resetar");
@@ -136,3 +141,4 @@ function resetar(){
                      );
              }
 );
+*/
