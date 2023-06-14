@@ -29,6 +29,10 @@ div.blocos{
     display: inline-block;
 }
 
+div.resultados{
+    display: inline-block;
+}
+
 div.scrollmenu {
     background-color: #565759;
     overflow: auto;
