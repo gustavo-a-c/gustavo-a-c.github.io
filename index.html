@@ -1,11 +1,17 @@
-<!--Página de testes - 06/06/23 - Gustavo Albuquerque - NeoSolar Energia-->
+<!-- v0.1 - Página de testes - 06/06/23 - Gustavo Albuquerque - NeoSolar Energia-->
+<!-- V0.2 - 07/06/23 - Gustavo Albuquerque - NeoSolar Energia-->
+<!-- V0.3 - 12/06/23 - Gustavo Albuquerque - NeoSolar Energia-->
+<!-- V0.4 - 13/06/23 - Gustavo Albuquerque - NeoSolar Energia-->
+<!-- V0.5 - 14/06/23 - Gustavo Albuquerque - NeoSolar Energia-->
+<!-- V0.6 - 16/06/23 - Gustavo Albuquerque - NeoSolar Energia-->
+
 
 <!DOCTYPE html>
 <html lang="pt" dir="ltr">
  
 <head>
   <meta charset="utf-8">
-  <title>SISTEMA DE RECOMENDAÇÃO DE KITS HÍBRIDOS E NOBREAK V0.4 - NEOSOLAR</title>
+  <title>SISTEMA DE RECOMENDAÇÃO DE KITS HÍBRIDOS E NOBREAK V0.6 - NEOSOLAR</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,7 +19,7 @@
 </script>
 
 <body>
-    <h1> (DEMONSTRAÇÃO) <br> SISTEMA DE RECOMENDAÇÃO DE KITS HÍBRIDOS E NOBREAK <br> V0.4 - NEOSOLAR <br> <br> </h1>
+    <h1> (DEMONSTRAÇÃO) <br> SISTEMA DE RECOMENDAÇÃO DE KITS HÍBRIDOS E NOBREAK <br> V0.6 - NEOSOLAR <br> <br> </h1>
     <p> 
         O sistema recebe como inputs a tensão de saída e a potência por parte do usuário, retornando
         os kits que mais se aproximam de sua respectiva necessidade.
@@ -21,64 +27,84 @@
 
     <br>
 
-    <label for="tensao_saida">Selecione a tensão de saída:</label>
+    <div class="div_tensao_saida">
+        <label for="tensao_saida">Selecione a tensão de saída:</label>
+    </div>
+    <br>
 
-    <br><br>
+    <div class="filtros_iniciais">
+        <select name="tensao_saida" id="tensao_saida">
+            <option value="110V">110V</option>
+            <option value="220V">220V</option>
+        </select>
+    </div>
 
-    <select name="tensao_saida" id="tensao_saida">
-        <option value="110V">110V</option>
-        <option value="220V">220V</option>
-    </select>
+    <div class="filtros_iniciais">
+    </div>
 
-    <br><br>
+    <br>
 
-    <div class="blocos">
+    <div class="meio">
+    <div class="blocos_inputs">
         <form>
-            <label for="desc_carga">Nome da carga:</label><br><br>
-            <input type="text" id="desc_carga" name="desc_carga"><br><br>
-
-            <label for="valor_carga">Potência:</label><br><br>
-            <input type="text" id="valor_carga" name="valor_carga"><br><br>
-
-            <label for="valor_horas">Horas de uso diário:</label><br><br>
-            <input type="text" id="valor_horas" name="valor_horas"><br><br>
-
+            <div class="titulo_inputs">
+                <p name="titulo_inputs" id="titulo_inputs"> Insira os valores abaixo: </p>
+            </div>
+            <div class = "inputs">
+                <br>
+                <label for="nome_carga">Nome da carga:</label><br><br>
+                <input type="text" id="nome_carga" name="nome_carga"><br><br>
+            </div>
+            <div class = "inputs">
+                <label for="pot_carga">Potência:</label><br><br>
+                <input type="text" id="pot_carga" name="pot_carga"><br><br>
+            </div>
+            <div class = "inputs">
+                <label for="horas_carga">Horas de uso diário:</label><br><br>
+                <input type="text" id="horas_carga" name="horas_carga"><br><br>
+            </div>
+            <br>
             <button type = "button" id="botao_resetar" onclick = "resetar()"> Resetar </button>
-            <button type = "button" id="botao_soma" onclick = "soma()"> Adicionar carga </button><br><br>
-
+            <button type = "button" id="botao_soma" onclick = "soma()"> Adicionar carga </button>
+            <button type = "button" id="botao_valores" onclick= "set_valores()"> Utilizar valores dos campos abaixo </button><br><br>
+            <br><br><br>
             <div class="resultados">
-                <label for="carga_teste">Potência Total:</label><br><br>
-                <p id="carga_teste" name="carga_teste">0W</p><br>
+                <label for="result_pot_total">Potência Total:</label><br><br>
+                <p id="result_pot_total" name="result_pot_total">0W</p>
+                <input type="text" id="input_pot_total" name="input_pot_total"><br>
             </div>
             <div class="resultados">
                 <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
             </div>
             <div class="resultados">
-                <label for="carga_teste2">Energia Consumida:</label><br><br>
-                <p id="carga_teste2" name="carga_teste2">0Wh</p><br>
+                <label for="result_energia_consumida">Energia Consumida:</label><br><br>
+                <p id="result_energia_consumida" name="result_energia_consumida">0W</p>
+                <input type="text" id="input_energia_consumida" name="input_energia_consumida"><br>
             </div>
         </form>
     </div>
 
-    <div class="blocos">
-        <form>
-            <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
-        </form>
+    <div class="blocos_inputs">
+            <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
     </div>
 
-    <div class="blocos">
-        <form>
-            <textarea id="lista_saida" rows=18 cols=60 wrap=on readonly></textarea>
-            <p>&nbsp</p>
-        </form>
+    <div class="blocos_inputs">
+        <br>
+        <div class="div_lista_saida">
+            <form>
+                <label for="lista_saida"> Lista de cargas: </label> <br> <br>
+                <textarea id="lista_saida" rows=18 cols=60 wrap=on readonly></textarea>
+            </form>
+        </div>
+    </div>
     </div>
 
 
-    <br><br>
+    <br><br><br>
 
-    <button type = "button" id="botao_teste" onclick = "processamento()"> Buscar kits </button>
+    <button type = "button" id="botao_buscar_kits" onclick = "processamento()"> Buscar kits </button>
 
-    <br> <br> <br>
+    <br><br><br>
 
     <div class="scrollmenu" id = "teste_scroll">
     </div>

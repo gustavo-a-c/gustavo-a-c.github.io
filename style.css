@@ -1,4 +1,4 @@
-
+/* configurações gerais da janela */
 body {
     background-color: #FFD04C;
     font-family: Arial;
@@ -6,33 +6,69 @@ body {
     text-align: center;
 }
 
+/* div dos filtros iniciais - NÃO UTILIZADA NO MOMENTO */
+div.filtros_iniciais{
+    color: #FFC04d
+}
+
+/* área do título da página */
 h1{
     font-size: 30px;
     background-color: #565759;
     color: #FFd04c;
 }
-  
+
+/* div que tem a textarea das cargas. fiz isso só para alinhar a label */
+div.div_lista_saida{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    font-size:20px
+}
+
+/* sendo franco, não me lembro */
 p {
     color: black;
     font-size: 15px;
 }
 
+/* define que a fonte do select (mais especificamente o da tensão 110 ou 220) é bold */
 select {
     font-weight: bold;
 }
 
+/* idem para os labels em geral */
 label {
     font-weight: bold;
 }
 
-div.blocos{
-    display: inline-block;
-}
+/* parágrafos dentro do bloco de inputs */
+div.blocos_inputs p{
+    text-align: center;
+    font-weight:bold;
+    font-size:20px;
+    }
 
+
+div.blocos_inputs {
+    flex: 0,8;
+    }
+
+/* alinha os três elementos blocos_inputs */
+div.meio {
+    display: flex;
+    justify-content: center;
+    }
+      
 div.resultados{
     display: inline-block;
 }
 
+div.inputs{
+    display: inline-block;
+}
+
+/* área de aparição dos kits (scrollmenu horizontal) */
 div.scrollmenu {
     background-color: #565759;
     overflow: auto;
@@ -50,3 +86,7 @@ div.scrollmenu {
   div.scrollmenu a:hover {
     background-color: #565759;
   }
+
+    div.div_tensao_saida {
+    font-size:20px
+    }
