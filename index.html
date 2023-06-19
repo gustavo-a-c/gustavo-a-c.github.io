@@ -8,11 +8,11 @@
 
 <!DOCTYPE html>
 <html lang="pt" dir="ltr">
- 
+
 <head>
-  <meta charset="utf-8">
-  <title>SISTEMA DE RECOMENDAÇÃO DE KITS HÍBRIDOS E NOBREAK V0.6 - NEOSOLAR</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <title>SISTEMA DE RECOMENDAÇÃO DE KITS HÍBRIDOS E NOBREAK V0.6 - NEOSOLAR</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <script src="script.js">
@@ -20,7 +20,7 @@
 
 <body>
     <h1> (DEMONSTRAÇÃO) <br> SISTEMA DE RECOMENDAÇÃO DE KITS HÍBRIDOS E NOBREAK <br> V0.6 - NEOSOLAR <br> <br> </h1>
-    <p> 
+    <p>
         O sistema recebe como inputs a tensão de saída e a potência por parte do usuário, retornando
         os kits que mais se aproximam de sua respectiva necessidade.
     </p>
@@ -45,68 +45,190 @@
     <br>
 
     <div class="meio">
-    <div class="blocos_inputs">
-        <form>
-            <div class="titulo_inputs">
-                <p name="titulo_inputs" id="titulo_inputs"> Insira os valores abaixo: </p>
-            </div>
-            <div class = "inputs">
-                <br>
-                <label for="nome_carga">Nome da carga:</label><br><br>
-                <input type="text" id="nome_carga" name="nome_carga"><br><br>
-            </div>
-            <div class = "inputs">
-                <label for="pot_carga">Potência:</label><br><br>
-                <input type="text" id="pot_carga" name="pot_carga"><br><br>
-            </div>
-            <div class = "inputs">
-                <label for="horas_carga">Horas de uso diário:</label><br><br>
-                <input type="text" id="horas_carga" name="horas_carga"><br><br>
-            </div>
-            <br>
-            <button type = "button" id="botao_resetar" onclick = "resetar()"> Resetar </button>
-            <button type = "button" id="botao_soma" onclick = "soma()"> Adicionar carga </button>
-            <button type = "button" id="botao_valores" onclick= "set_valores()"> Utilizar valores dos campos abaixo </button><br><br>
-            <br><br><br>
-            <div class="resultados">
-                <label for="result_pot_total">Potência Total:</label><br><br>
-                <p id="result_pot_total" name="result_pot_total">0W</p>
-                <input type="text" id="input_pot_total" name="input_pot_total"><br>
-            </div>
-            <div class="resultados">
-                <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
-            </div>
-            <div class="resultados">
-                <label for="result_energia_consumida">Energia Consumida:</label><br><br>
-                <p id="result_energia_consumida" name="result_energia_consumida">0W</p>
-                <input type="text" id="input_energia_consumida" name="input_energia_consumida"><br>
-            </div>
-        </form>
-    </div>
-
-    <div class="blocos_inputs">
-            <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
-    </div>
-
-    <div class="blocos_inputs">
-        <br>
-        <div class="div_lista_saida">
+        <div class="blocos_inputs">
             <form>
-                <label for="lista_saida"> Lista de cargas: </label> <br> <br>
-                <textarea id="lista_saida" rows=18 cols=60 wrap=on readonly></textarea>
+                <div class="titulo_inputs">
+                    <p name="titulo_inputs" id="titulo_inputs"> Insira os valores abaixo: </p>
+                </div>
+                <div class="inputs">
+                    <br>
+                    <label for="nome_carga">Nome da carga:</label><br><br>
+                    <input type="text" id="nome_carga" name="nome_carga"><br><br>
+                </div>
+                <div class="inputs">
+                    <label for="pot_carga">Potência:</label><br><br>
+                    <input type="text" id="pot_carga" name="pot_carga"><br><br>
+                </div>
+                <div class="inputs">
+                    <label for="horas_carga">Horas de uso diário:</label><br><br>
+                    <input type="text" id="horas_carga" name="horas_carga"><br><br>
+                </div>
+                <br>
+                <button type="button" id="botao_resetar" onclick="resetar()"> Resetar </button>
+                <button type="button" id="botao_soma" onclick="soma()"> Adicionar carga </button>
+                <button type="button" id="botao_valores" onclick="set_valores()"> Utilizar valores dos campos abaixo
+                </button><br><br>
+                <br><br><br>
+                <div class="resultados">
+                    <label for="result_pot_total">Potência Total:</label><br><br>
+                    <p id="result_pot_total" name="result_pot_total">0W</p>
+                    <input type="text" id="input_pot_total" name="input_pot_total"><br>
+                </div>
+                <div class="resultados">
+                    <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+                </div>
+                <div class="resultados">
+                    <label for="result_energia_consumida">Energia Consumida:</label><br><br>
+                    <p id="result_energia_consumida" name="result_energia_consumida">0Wh</p>
+                    <input type="text" id="input_energia_consumida" name="input_energia_consumida"><br>
+                </div>
             </form>
         </div>
-    </div>
+
+        <div class="blocos_inputs">
+            <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+        </div>
+
+        <div class="blocos_inputs">
+            <br>
+            <div class="div_lista_saida">
+                <form>
+                    <label for="lista_saida"> Lista de cargas: </label> <br> <br>
+                    <textarea id="lista_saida" rows=18 cols=60 wrap=on readonly></textarea>
+                </form>
+            </div>
+        </div>
     </div>
 
 
     <br><br><br>
 
-    <button type = "button" id="botao_buscar_kits" onclick = "processamento()"> Buscar kits </button>
+    <button type="button" id="botao_buscar_kits" onclick="processamento()"> Buscar kits </button>
 
     <br><br><br>
 
-    <div class="scrollmenu" id = "teste_scroll">
+    <div class="scrollmenu" id="teste_scroll">
     </div>
-      
+
+    <div id="easter_egg_codigo"></div>
+    <!-- easter egg. snake por chatgpt-->
+    <style>
+        #easter_egg {
+            background-color: none;
+        }
+    </style>
+
+<script>
+    function jogo_easter_egg() {
+        // easter egg! Snake por ChatGPT
+      document.getElementById("easter_egg").style.width = "400px";
+      document.getElementById("easter_egg").style.height = "400px";
+      document.getElementById("easter_egg").style.border = "1px solid black";
+      document.getElementById("easter_egg").style.display = "inline-block";
+      const canvas = document.createElement("canvas");
+      canvas.width = 400;
+      canvas.height = 400;
+      canvas.style.border = "1px solid black";
+      const ctx = canvas.getContext("2d");
+      document.getElementById("easter_egg").appendChild(canvas);
+
+      const box = 20;
+      const canvasSize = 400;
+      const direction = {
+        UP: "w",
+        DOWN: "s",
+        LEFT: "a",
+        RIGHT: "d",
+      };
+
+      let snake = [{ x: 200, y: 200 }];
+      let food = { x: Math.floor(Math.random() * 20) * box, y: Math.floor(Math.random() * 20) * box };
+      let score = 0;
+      let currentDirection = direction.RIGHT;
+
+      document.addEventListener("keydown", changeDirection);
+
+      function changeDirection(event) {
+        const key = event.key.toLowerCase();
+
+        if (key === direction.UP && currentDirection !== direction.DOWN) {
+          currentDirection = direction.UP;
+        } else if (key === direction.DOWN && currentDirection !== direction.UP) {
+          currentDirection = direction.DOWN;
+        } else if (key === direction.LEFT && currentDirection !== direction.RIGHT) {
+          currentDirection = direction.LEFT;
+        } else if (key === direction.RIGHT && currentDirection !== direction.LEFT) {
+          currentDirection = direction.RIGHT;
+        }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvasSize, canvasSize);
+
+        for (let i = 0; i < snake.length; i++) {
+          ctx.fillStyle = i === 0 ? "green" : "white";
+          ctx.fillRect(snake[i].x, snake[i].y, box, box);
+
+          ctx.strokeStyle = "black";
+          ctx.strokeRect(snake[i].x, snake[i].y, box, box);
+        }
+
+        ctx.fillStyle = "red";
+        ctx.fillRect(food.x, food.y, box, box);
+
+        ctx.fillStyle = "black";
+        ctx.font = "20px Arial";
+        ctx.fillText(`Pontuação: ${score}`, 10, 20);
+      }
+
+      function update() {
+        const head = { x: snake[0].x, y: snake[0].y };
+
+        if (currentDirection === direction.UP) head.y -= box;
+        if (currentDirection === direction.DOWN) head.y += box;
+        if (currentDirection === direction.LEFT) head.x -= box;
+        if (currentDirection === direction.RIGHT) head.x += box;
+
+        snake.unshift(head);
+
+        if (head.x === food.x && head.y === food.y) {
+          score++;
+          food = { x: Math.floor(Math.random() * 20) * box, y: Math.floor(Math.random() * 20) * box };
+        } else {
+          snake.pop();
+        }
+      }
+
+      function gameOver() {
+        clearInterval(game);
+        alert("Game Over!");
+      }
+
+      function collisionCheck() {
+        const head = snake[0];
+
+        if (
+          head.x < 0 ||
+          head.x >= canvasSize ||
+          head.y < 0 ||
+          head.y >= canvasSize ||
+          snake.slice(1).some((part) => part.x === head.x && part.y === head.y)
+        ) {
+          gameOver();
+        }
+      }
+
+      function gameLoop() {
+        draw();
+        update();
+        collisionCheck();
+      }
+
+      const game = setInterval(gameLoop, 100);
+    }
+  </script>
+
+
+    <div id="easter_egg"></div>
+
 </body>
