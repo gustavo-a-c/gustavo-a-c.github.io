@@ -4,21 +4,34 @@
 <!-- V0.4 - 13/06/23 - Gustavo Albuquerque - NeoSolar Energia-->
 <!-- V0.5 - 14/06/23 - Gustavo Albuquerque - NeoSolar Energia-->
 <!-- V0.6 - 16/06/23 - Gustavo Albuquerque - NeoSolar Energia-->
-<!-- V0.7 - /07/23 - Gustavo Albuquerque - NeoSolar Energia-->
+<!-- V0.7 - 05/07/23 - Gustavo Albuquerque - NeoSolar Energia-->
+<!-- V0.7.5 - /07/23 - Gustavo Albuquerque - NeoSolar Energia-->
+<!-- 
+  AJUSTES ESTÉTICOS: REMODELAR PARTE DO CSS, RENOMEAR VARIÁVEIS
+  DO HTML, ADICIONAR CAIXA DE SELEÇÃO PARA REMOVER A CALCULADORA,
+  TORNAR CAMPOS COM APARÊNCIA MAIS MODERNA E QUEM SABE ATÉ ADICIONAR
+  ANIMAÇÕES. ATÉ OTIMIZAÇÃO PARA CELULAR PODE SER POSSÍVEL, DEPENDENDO
+  DA DIFICULDADE
+  QUANTO À SIMPLIFICAÇÃO DE CÓDIGO, VER O QUE PODE SER FEITO.
+  ATÉ NOVO EASTER EGG?
+  IDENTIFICAR MELHOR O TRECHO DE CÓDIGO NA TAG SCRIPT. TENTAR, QUEM SABE, DEVOLVÊ-LA 
+  PARA O ARQUIVO JAVASCRIPT, EMBORA CREIO QUE TALVEZ HAJA PROBLEMAS COM O "ONCLICK"
+  DAS FUNÇÕES.
+-->
 <!DOCTYPE html>
 <html lang="pt" dir="ltr">
 <style>
   /* configurações gerais da janela */
   body {
     background-color: #FFD04C;
-    font-family: Arial;
+    font-family: 'Segoe UI';
     justify-content: center;
     text-align: center;
   }
 
   /* div dos filtros iniciais - NÃO UTILIZADA NO MOMENTO */
   div.filtros_iniciais {
-    font-family: Arial;
+    font-family: 'Segoe UI';
   }
 
   /* área do título da página */
@@ -121,7 +134,6 @@
 <head>
   <meta charset="utf-8">
   <title>SISTEMA DE RECOMENDAÇÃO DE KITS V0.7 - NEOSOLAR</title>
-  <link rel="stylesheet" href="style.css">
 </head>
 <script>
   //07/06/2023 - Gustavo Albuquerque - NeoSolar Energia - Sistema de Recomendação de Kits Híbridos V0.2
@@ -217,8 +229,9 @@
         '<br> Inversor ' + lista_analise3[i][2] +
         '<br>' + lista_analise3[i][4] + 'x' + lista_analise3[i][5] + ' painéis ' + lista_analise3[i][3] +
         '<br>' + lista_analise3[i][7] + 'x' + lista_analise3[i][8] + ' baterias ' + lista_analise3[i][6] +
-        '<br> Energia disponível diária: ' + lista_analise3[i][23] + 'W' +
-        '<br> Potência do inversor: ' + pot_saida_inversor +
+        '<br> Energia disponível diária: ' + lista_analise3[i][23] + 'Wh' +
+        '<br> Potência do inversor: ' + pot_saida_inversor + "W" +
+        '<br> Controlador: ' + lista_analise3[i][59] +
         // '<br>' + lista_analise2[i][23] + ' ' + lista_analise2[i][41] + ' ' + limite1 + ' ' + limite2 +
         '</a>'
     }
@@ -507,8 +520,9 @@
         '<br> Inversor ' + lista_pos_filtro_4[i][2] +
         '<br>' + lista_pos_filtro_4[i][4] + 'x' + lista_pos_filtro_4[i][5] + ' painéis ' + lista_pos_filtro_4[i][3] +
         '<br>' + lista_pos_filtro_4[i][7] + 'x' + lista_pos_filtro_4[i][8] + ' baterias ' + lista_pos_filtro_4[i][6] +
-        '<br> Energia disponível diária: ' + lista_pos_filtro_4[i][23] + 'W' +
-        '<br> Potência do inversor: ' + pot_saida_inversor +
+        '<br> Energia disponível diária: ' + lista_pos_filtro_4[i][23] + 'Wh' +
+        '<br> Potência do inversor: ' + pot_saida_inversor + "W" +
+        '<br> Controlador: ' + lista_pos_filtro_4[i][59] +
         // '<br>' + lista_analise2[i][23] + ' ' + lista_analise2[i][41] + ' ' + limite1 + ' ' + limite2 +
         '</a>'
     }
@@ -627,10 +641,88 @@
     }
     const game = setInterval(gameLoop, 100);
   }
+
+
+  function hab_calc() {
+    // é possível esconder a div inteira?
+    //alert("TEST")
+    e1 = document.getElementById("titulo_inputs")
+    e2 = document.getElementById("nome_carga")
+    e3 = document.getElementById("botao_resetar")
+    e4 = document.getElementById("botao_soma")
+    e5 = document.getElementById("horas_carga")
+    e6 = document.getElementById("pot_carga")
+    e7 = document.getElementById("l1")
+    e8 = document.getElementById("l2")
+    e9 = document.getElementById("l3")
+    e10 = document.getElementById("l4")
+    e11 = document.getElementById("lista_saida")
+    e12 = document.getElementById("l5")
+    div1 = document.getElementById("inputs")
+    div2 = document.getElementById("resultados")
+    b1 = document.getElementById("b1")
+    b2 = document.getElementById("b2")
+    b3 = document.getElementById("b3")
+    b4 = document.getElementById("b4")
+    b5 = document.getElementById("b5")
+    b6 = document.getElementById("b6")
+    a1 = document.getElementById("estetica1")
+    a2 = document.getElementById("estetica2")
+
+    s1 = e1.getAttribute("hidden")
+
+    if (s1) {
+      //alert("Caso 1")
+      e1.removeAttribute("hidden");
+      e2.removeAttribute("hidden");
+      e3.removeAttribute("hidden");
+      e4.removeAttribute("hidden");
+      e5.removeAttribute("hidden");
+      e6.removeAttribute("hidden");
+      e7.removeAttribute("hidden");
+      e8.removeAttribute("hidden");
+      e9.removeAttribute("hidden");
+      e10.removeAttribute("hidden");
+      e11.removeAttribute("hidden");
+      e12.removeAttribute("hidden");
+      b1.removeAttribute("hidden");
+      b2.removeAttribute("hidden");
+      b3.removeAttribute("hidden");
+      b4.removeAttribute("hidden");
+      b5.removeAttribute("hidden");
+      b6.removeAttribute("hidden");
+      a1.setAttribute("hidden", "hidden");
+      a2.setAttribute("hidden", "hidden");
+
+    } else {
+      //alert("Caso 2")
+      e1.setAttribute("hidden", "hidden");
+      e2.setAttribute("hidden", "hidden");
+      e3.setAttribute("hidden", "hidden");
+      e4.setAttribute("hidden", "hidden");
+      e5.setAttribute("hidden", "hidden");
+      e6.setAttribute("hidden", "hidden");
+      e7.setAttribute("hidden", "hidden");
+      e8.setAttribute("hidden", "hidden");
+      e9.setAttribute("hidden", "hidden");
+      e10.setAttribute("hidden", "hidden");
+      e11.setAttribute("hidden", "hidden");
+      e12.setAttribute("hidden", "hidden");
+      b1.setAttribute("hidden", "hidden");
+      b2.setAttribute("hidden", "hidden");
+      b3.setAttribute("hidden", "hidden");
+      b4.setAttribute("hidden", "hidden");
+      b5.setAttribute("hidden", "hidden");
+      b6.setAttribute("hidden", "hidden");
+      a1.removeAttribute("hidden");
+      a2.removeAttribute("hidden");
+
+    }
+  }
 </script>
 
 <body>
-  <h1> (DEMONSTRAÇÃO) <br> SISTEMA DE RECOMENDAÇÃO DE KITS <br> V0.7 - NEOSOLAR <br>
+  <h1> (DEMONSTRAÇÃO) <br> SISTEMA DE RECOMENDAÇÃO DE KITS <br> V0.7.1 - NEOSOLAR <br>
     <br>
   </h1>
   <p> O sistema recebe como inputs a tensão de saída e a potência por parte do usuário, retornando os kits que mais se
@@ -648,49 +740,52 @@
       <option value="110V">110V</option>
       <option value="220V">220V</option>
     </select>
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;
+    <label for="input_habilitar_calc"> Habilitar / Desabilitar calculadora:</label>
+    <button type="button" id="botao_habilitar_calc" onclick="hab_calc()"> I / O </button>
   </div>
   <div class="filtros_iniciais"></div>
   <br>
+  <p id="estetica1" hidden>
+    ________________________________________________________________________________________________</p>
   <div class="meio">
     <div class="blocos_inputs">
       <form>
         <div class="titulo_inputs">
           <p name="titulo_inputs" id="titulo_inputs"> Insira os valores abaixo: </p>
         </div>
-        <div class="inputs">
+        <div class="inputs" id="inputs">
           <br>
-          <label for="nome_carga">Nome da carga:</label>
+          <label for="nome_carga" id="l3">Nome da carga:</label>
           <br>
           <br>
           <input type="text" id="nome_carga" name="nome_carga">
           <br>
           <br>
         </div>
-        <div class="inputs">
-          <label for="pot_carga">Potência:</label>
+        <div class="inputs" id="inputs">
+          <label for="pot_carga" id="l2">Potência:</label>
           <br>
           <br>
           <input type="text" id="pot_carga" name="pot_carga">
           <br>
           <br>
         </div>
-        <div class="inputs">
-          <label for="horas_carga">Horas de uso diário:</label>
+        <div class="inputs" id="inputs">
+          <label for="horas_carga" id="l1">Horas de uso diário:</label>
           <br>
           <br>
           <input type="text" id="horas_carga" name="horas_carga">
           <br>
           <br>
         </div>
-        <br>
-        <button type="button" id="botao_resetar" onclick="resetar()"> Resetar </button>
+        <br id="b6">
         <button type="button" id="botao_soma" onclick="soma()"> Adicionar carga </button>
-        <button type="button" id="botao_valores" onclick="set_valores()"> Utilizar valores dos campos abaixo </button>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        <br id="b1">
+        <br id="b2">
+        <br id="b3">
+        <br id="b4">
+        <br id="b5">
         <div class="resultados">
           <label for="result_pot_total">Potência Total:</label>
           <br>
@@ -699,10 +794,10 @@
           <input type="text" id="input_pot_total" name="input_pot_total">
           <br>
         </div>
-        <div class="resultados">
+        <div class="resultados" id="resultados">
           <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
         </div>
-        <div class="resultados">
+        <div class="resultados" id="resultados">
           <label for="result_energia_consumida">Energia Consumida:</label>
           <br>
           <br>
@@ -711,22 +806,27 @@
           <br>
         </div>
       </form>
+      <button type="button" id="botao_valores" onclick="set_valores()"> Utilizar valores dos campos acima </button>
     </div>
     <div class="blocos_inputs">
-      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+      <p id="l5">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
     </div>
     <div class="blocos_inputs">
       <br>
       <div class="div_lista_saida">
         <form>
-          <label for="lista_saida"> Lista de cargas: </label>
+          <label for="lista_saida" id="l4"> Lista de cargas: </label>
           <br>
           <br>
           <textarea id="lista_saida" rows=18 cols=60 wrap=on readonly></textarea>
+          <br>
+          <button type="button" id="botao_resetar" onclick="resetar()"> Resetar </button>
         </form>
       </div>
     </div>
   </div>
+  <p id="estetica2" hidden>
+    ________________________________________________________________________________________________</p>
   <br>
   <br>
   <br>
