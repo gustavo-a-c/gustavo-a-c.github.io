@@ -5,19 +5,9 @@
 <!-- V0.5 - 14/06/23 - Gustavo Albuquerque - NeoSolar Energia-->
 <!-- V0.6 - 16/06/23 - Gustavo Albuquerque - NeoSolar Energia-->
 <!-- V0.7 - 05/07/23 - Gustavo Albuquerque - NeoSolar Energia-->
-<!-- V0.7.5 - /07/23 - Gustavo Albuquerque - NeoSolar Energia-->
-<!-- 
-  AJUSTES ESTÉTICOS: REMODELAR PARTE DO CSS, RENOMEAR VARIÁVEIS
-  DO HTML, ADICIONAR CAIXA DE SELEÇÃO PARA REMOVER A CALCULADORA,
-  TORNAR CAMPOS COM APARÊNCIA MAIS MODERNA E QUEM SABE ATÉ ADICIONAR
-  ANIMAÇÕES. ATÉ OTIMIZAÇÃO PARA CELULAR PODE SER POSSÍVEL, DEPENDENDO
-  DA DIFICULDADE
-  QUANTO À SIMPLIFICAÇÃO DE CÓDIGO, VER O QUE PODE SER FEITO.
-  ATÉ NOVO EASTER EGG?
-  IDENTIFICAR MELHOR O TRECHO DE CÓDIGO NA TAG SCRIPT. TENTAR, QUEM SABE, DEVOLVÊ-LA 
-  PARA O ARQUIVO JAVASCRIPT, EMBORA CREIO QUE TALVEZ HAJA PROBLEMAS COM O "ONCLICK"
-  DAS FUNÇÕES.
--->
+<!-- V0.7.5 - ??/07/23 - Gustavo Albuquerque - NeoSolar Energia-->
+<!-- V0.7.6 - 09/11/23 - Gustavo Albuquerque - NeoSolar Energia-->
+
 <!DOCTYPE html>
 <html lang="pt" dir="ltr">
 <style>
@@ -157,7 +147,20 @@
       lista_bidimensional = kits_off
     }
 
-    const fator_energia = 3000
+    var bool_filtro_fator = document.getElementById('checkbox_limite');
+    //console.log(bool_filtro_fator)
+    var fator_energia = 0
+
+    if (bool_filtro_fator.checked == true){
+      console.log("Ligado!")
+      fator_energia = 3000
+      console.log(fator_energia)
+    }
+    else{
+      console.log("Desligado!")
+      fator_energia = 50000
+      console.log(fator_energia)
+    }
 
     // área que lê o html e define os limites de potência e tensão
 
@@ -174,10 +177,14 @@
       tensao_saida = 220
     }
 
+    console.log("Tamanho do array antes do primeiro for:", lista_bidimensional.length)
+  
+
     // área da análise da qtd. energia
     var lista_analise1 = []
     for (let i = 0; i < lista_bidimensional.length; i++) {
       //console.log(lista_bidimensional[i][23])
+      //console.log(limite1, lista_bidimensional[i][23], limite2)
       if ((lista_bidimensional[i][23] >= limite1 && lista_bidimensional[i][23] <= limite2)) {
         lista_analise1.push(lista_bidimensional[i])
       }
@@ -260,13 +267,13 @@
       </div>
       <br>
       <div class="filtro_unidade" id="filtro_unidade">
-        <label for="filtro_fab_inversor">Linha do Inversor:</label>
+        <label for="filtro_fab_inversor">Fabricante do Inversor:</label>
         <br>
         <select name="filtro_fab_inversor" id="filtro_fab_inversor">
         <br>
-        <option value="UP">Linha UPower</option>
-        <option value="ZT">Linha Ztroon</option>
-        <option value="IP">Linha IPower</option>
+        <option value="ZT">Onda Senoidal Pura</option>
+        <option value="IP">Off Grid</option>
+        <option value="UP">Híbrido</option>
         </select>
         <br>
         <label for="utilizar_filtro_2">Utilizar filtro:</label>
@@ -274,39 +281,13 @@
       </div>
       <br>
       <div class="filtro_unidade" id="filtro_unidade">
-        <label for="filtro_inversor">Inversor:</label>
+        <label for="filtro_inversor">Tipo do Inversor:</label>
         <br>
         <select name="filtro_inversor" id="filtro_inversor">
           <br>
-          <option value="UP2000-HM6021">UP2000-HM6021</option>
-          <option value="UP3000-HM8041">UP3000-HM8041</option>
-          <option value="UP3000-HM5042">UP3000-HM5042</option>
-          <option value="UP5000-HM8042">UP5000-HM8042</option>
-          <option value="IP1500-42-Plus(T)">IP1500-42-Plus(T)</option>
-          <option value="IP2000-42-Plus(T)">IP2000-42-Plus(T)</option>
-          <option value="IP3000-42-Plus(T)">IP3000-42-Plus(T)</option>
-          <option value="IP1000-21-Plus(T)">IP1000-21-Plus(T)</option>
-          <option value="IP1000-22-Plus(T)">IP1000-22-Plus(T)</option>
-          <option value="IP1500-11-Plus(T)">IP1500-11-Plus(T)</option>
-          <option value="IP1500-12-Plus(T)">IP1500-12-Plus(T)</option>
-          <option value="IP2000-21-Plus(T)">IP2000-21-Plus(T)</option>
-          <option value="IP2000-22-Plus(T)">IP2000-22-Plus(T)</option>
-          <option value="IP3000-11-Plus(T)">IP3000-11-Plus(T)</option>
-          <option value="IP3000-12-Plus(T)">IP3000-12-Plus(T)</option>
-          <option value="IP3000-21-Plus(T)">IP3000-21-Plus(T)</option>
-          <option value="IP3000-22-Plus(T)">IP3000-22-Plus(T)</option>
-          <option value="IP4000-41-Plus(T)">IP4000-41-Plus(T)</option>
-          <option value="IP5000-42-Plus(T)">IP5000-42-Plus(T)</option>
-          <option value="ZT600-11">ZT600-11</option>
-          <option value="ZT600-12">ZT600-12</option>
-          <option value="ZT1000-11">ZT1000-11</option>
-          <option value="ZT1000-12">ZT1000-12</option>
-          <option value="ZT1000-21">ZT1000-21</option>
-          <option value="ZT1000-22">ZT1000-22</option>
-          <option value="ZT2000-11">ZT2000-11</option>
-          <option value="ZT2000-12">ZT2000-12</option>
-          <option value="ZT2000-21">ZT2000-21</option>
-          <option value="ZT2000-22">ZT2000-22</option>
+          <option value="Epever">Epever</option>
+          <option value="Ztroon">Ztroon</option>
+          <option value="Deye">Deye</option>
         </select>
         <br>
         <label for="utilizar_filtro_3">Utilizar filtro:</label>
@@ -327,6 +308,20 @@
         <input type="checkbox" id="utilizar_filtro_4">
         <br>
       </div>
+      <br>
+      <div class="filtro_unidade" id="filtro_unidade">
+        <label for="filtro_tipo_contr">Tipo do Controlador:</label>
+        <br>
+        <select name="filtro_tipo_contr" id="filtro_tipo_contr">
+          <br>
+          <option value="PWM">PWM</option>
+          <option value="MPPT">MPPT</option>
+        </select>
+        <br>
+        <label for="utilizar_filtro_5">Utilizar filtro:</label>
+        <input type="checkbox" id="utilizar_filtro_5">
+        <br>
+      </div>      
       <div class="filtro_unidade" id="filtro_unidade">
         <br>
         <button type="button" id="botao_aplicar" onclick="aplicar_filtros()"> Aplicar Filtros </button>
@@ -416,7 +411,7 @@
     campo2.innerHTML = valor2 + 'Wh'
   }
 
-  // FUNCAO DO FILTRO
+  // FUNCAO DO FILTRO - ANÁLISE DOS FILTROS
 
   function aplicar_filtros() {
     //alert("FUNCAO FOI CHAMADA")
@@ -429,12 +424,15 @@
     var bool_filtro_3 = document.getElementById('utilizar_filtro_3');
     var valor_filtro_4 = document.getElementById('filtro_tipo_bat').value;
     var bool_filtro_4 = document.getElementById('utilizar_filtro_4');
+    var valor_filtro_5 = document.getElementById('filtro_tipo_contr').value;
+    var bool_filtro_5 = document.getElementById('utilizar_filtro_5');
     var lista_pos_filtro_1 = []
     var lista_pos_filtro_2 = []
     var lista_pos_filtro_3 = []
     var lista_pos_filtro_4 = []
-    console.log([valor_filtro_1, valor_filtro_2, valor_filtro_3, valor_filtro_4,
-      bool_filtro_1, bool_filtro_2, bool_filtro_3, bool_filtro_4])
+    var lista_pos_filtro_5 = []
+    console.log([valor_filtro_1, valor_filtro_2, valor_filtro_3, valor_filtro_4, valor_filtro_5,
+      bool_filtro_1, bool_filtro_2, bool_filtro_3, bool_filtro_4, bool_filtro_5])
 
     if (bool_filtro_1.checked == true) {
       console.log("filtro 1 lido")
@@ -471,10 +469,24 @@
     if (bool_filtro_3.checked == true) {
       console.log("filtro 3 lido")
       for (let i = 0; i < lista_pos_filtro_2.length; i++) {
-        if (lista_pos_filtro_2[i][2].includes(valor_filtro_3) == true) {
-          lista_pos_filtro_3.push(lista_pos_filtro_2[i])
+        if (valor_filtro_3 == "Epever"){
+          if (lista_pos_filtro_2[i][2].includes("UP") == true || lista_pos_filtro_2[i][2].includes("IP") == true) {
+            lista_pos_filtro_3.push(lista_pos_filtro_2[i])
+          }
+          else { }
         }
-        else { }
+        if (valor_filtro_3 == "Ztroon"){
+          if (lista_pos_filtro_2[i][2].includes("ZT")) {
+            lista_pos_filtro_3.push(lista_pos_filtro_2[i])
+          }
+          else { }
+        }
+        if (valor_filtro_3 == "Deye"){
+          if (lista_pos_filtro_2[i][2].includes("SUN")) {
+            lista_pos_filtro_3.push(lista_pos_filtro_2[i])
+          }
+          else { }
+        }
       }
 
     }
@@ -486,7 +498,7 @@
     if (bool_filtro_4.checked == true) {
       console.log("filtro 4 lido")
       for (let i = 0; i < lista_pos_filtro_3.length; i++) {
-        console.log("TIPO DA BATERIA:", lista_pos_filtro_3[i][57])
+        //console.log("TIPO DA BATERIA:", lista_pos_filtro_3[i][57])
         if (lista_pos_filtro_3[i][58].includes(valor_filtro_4) == true) {
           lista_pos_filtro_4.push(lista_pos_filtro_3[i])
         }
@@ -495,10 +507,45 @@
 
     }
     else {
-      console.log("parte4")
+      // console.log("parte4")
       lista_pos_filtro_4 = lista_pos_filtro_3
     }
-    console.log(lista_pos_filtro_4 == dados)
+
+    if (bool_filtro_5.checked == true) {
+      console.log("filtro 5 lido")
+      for (let i = 0; i < lista_pos_filtro_4.length; i++) {
+        //console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+        console.log("TIPO DO CONTROLADOR:", lista_pos_filtro_4[i][59])
+        if (lista_pos_filtro_4[i][59] == "-"){
+          alert("Não foi possível aplicar o filtro p/ controlador. Verifique se os kits contém um")
+          lista_pos_filtro_5 = lista_pos_filtro_4
+          break
+        }
+        else{
+          if (valor_filtro_5 == "PWM"){
+            if ((lista_pos_filtro_4[i][59].includes("LS") == true) || (lista_pos_filtro_4[i][59].includes("VS") == true)) {
+              lista_pos_filtro_5.push(lista_pos_filtro_4[i])
+            }
+            else { }
+          }
+          else {
+            if ((lista_pos_filtro_4[i][59].includes("XTRA") == true)) {
+              lista_pos_filtro_5.push(lista_pos_filtro_4[i])
+            }
+            else { }
+          }
+        }
+      }
+
+    }
+    else {
+      // console.log("parte5")
+      lista_pos_filtro_5 = lista_pos_filtro_4
+    }
+
+    lista_pos_filtro_4 = []
+    lista_pos_filtro_4 = lista_pos_filtro_5
+    // console.log(lista_pos_filtro_4 == dados)
 
     var codigo_html_resultado = ''
 
@@ -722,7 +769,7 @@
 </script>
 
 <body>
-  <h1> (DEMONSTRAÇÃO) <br> SISTEMA DE RECOMENDAÇÃO DE KITS <br> V0.7.1 - NEOSOLAR <br>
+  <h1> (DEMONSTRAÇÃO) <br> SISTEMA DE RECOMENDAÇÃO DE KITS <br> V0.7.6 - NEOSOLAR <br>
     <br>
   </h1>
   <p> O sistema recebe como inputs a tensão de saída e a potência por parte do usuário, retornando os kits que mais se
@@ -829,6 +876,8 @@
     ________________________________________________________________________________________________</p>
   <br>
   <br>
+  <label for="checkbox_limite">Limitar a busca a Pot. + 3000W / 3000Wh</label>
+  <input type="checkbox" id="checkbox_limite">
   <br>
   <button type="button" id="botao_buscar_kits" onclick="processamento(false)"> Buscar kits </button>
   <br>
