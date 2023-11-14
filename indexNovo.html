@@ -248,7 +248,7 @@
         </select>
         <br>
         <label for="utilizar_filtro_2">Utilizar filtro:</label>
-        <input type="checkbox" id="utilizar_filtro_2" onclick="alert('Filtro sendo implementado. Ainda não está 100%, tente outros :)')">
+        <input type="checkbox" id="utilizar_filtro_2" onclick="alert('Esse filtro está parcialmente funcional no momento (14/11/2023). Estamos corrigindo!')">
       </div>
       <br>
       <div class="filtro_unidade" id="filtro_unidade">
@@ -276,15 +276,15 @@
           <option value="ch">Fulguris - Chumbo</option>
           <option value="ch">Unipower - Chumbo</option>
           <option value="ch">Ztroon - Chumbo</option>
-          <option value="ti">Freedom - Lítio</option>
-          <option value="ti">Moura - Lítio</option>
-          <option value="ti">Fulguris - Lítio</option>
+          <option value="0ti">Freedom - Lítio</option>
+          <option value="0ti">Moura - Lítio</option>
+          <option value="0ti">Fulguris - Lítio</option>
           <option value="ti">Unipower - Lítio</option>
-          <option value="ti">Ztroon - Lítio</option>
+          <option value="0ti">Ztroon - Lítio</option>
         </select>
         <br>
         <label for="utilizar_filtro_4">Utilizar filtro:</label>
-        <input type="checkbox" id="utilizar_filtro_4" onclick="alert('Filtro sendo implementado. Ainda não está 100%, tente outros :)')">
+        <input type="checkbox" id="utilizar_filtro_4">
         <br>
       </div>
       <br>
@@ -455,11 +455,27 @@
 
         if (bool_filtro_2.checked == true) {
             console.log("filtro 2 lido")
+            let tensao = 0
             for (let i = 0; i < lista_pos_filtro_1.length; i++) {
-                if (lista_pos_filtro_1[i][2].includes(valor_filtro_2) == true) {
-                    lista_pos_filtro_2.push(lista_pos_filtro_1[i])
+                console.log(tensao, "1", lista_pos_filtro_1[i][42])
+                console.log(lista_pos_filtro_1[i][2], (valor_filtro_2[0]+valor_filtro_2[1]))
+                console.log(tensao)
+                if (lista_pos_filtro_1[i][2].includes(valor_filtro_2[0]+valor_filtro_2[1]) == true) {
+                    tensao = valor_filtro_2[3]
+                    if (tensao == "2"){
+                        if (parseInt(lista_pos_filtro_1[i][42]) > 150){
+                            lista_pos_filtro_2.push(lista_pos_filtro_1[i])
+                        }
+                    }
+                    else{
+                        if (parseInt(lista_pos_filtro_1[i][42]) < 150){
+                            lista_pos_filtro_2.push(lista_pos_filtro_1[i])
+                        }
+                    }
                 }
-                else { }
+                else {
+                    tensao = 0
+                }
             }
 
         }
