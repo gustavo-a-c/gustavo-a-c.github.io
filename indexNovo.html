@@ -229,7 +229,7 @@
         </select>
         <br>
         <label for="utilizar_filtro_1">Utilizar filtro:</label>
-        <input type="checkbox" id="utilizar_filtro_1">
+        <input type="checkbox" id="utilizar_filtro_1" onclick="alert('Filtro sendo implementado. Ainda não está 100%, tente outros :)')">
       </div>
       <br>
       <div class="filtro_unidade" id="filtro_unidade">
@@ -248,7 +248,7 @@
         </select>
         <br>
         <label for="utilizar_filtro_2">Utilizar filtro:</label>
-        <input type="checkbox" id="utilizar_filtro_2">
+        <input type="checkbox" id="utilizar_filtro_2" onclick="alert('Filtro sendo implementado. Ainda não está 100%, tente outros :)')">
       </div>
       <br>
       <div class="filtro_unidade" id="filtro_unidade">
@@ -271,12 +271,20 @@
         <br>
         <select name="filtro_tipo_bat" id="filtro_tipo_bat">
           <br>
-          <option value="mb">Chumbo</option>
-          <option value="ti">Lítio</option>
+          <option value="ch">Freedom - Chumbo</option>
+          <option value="ch">Moura - Chumbo</option>
+          <option value="ch">Fulguris - Chumbo</option>
+          <option value="ch">Unipower - Chumbo</option>
+          <option value="ch">Ztroon - Chumbo</option>
+          <option value="ti">Freedom - Lítio</option>
+          <option value="ti">Moura - Lítio</option>
+          <option value="ti">Fulguris - Lítio</option>
+          <option value="ti">Unipower - Lítio</option>
+          <option value="ti">Ztroon - Lítio</option>
         </select>
         <br>
         <label for="utilizar_filtro_4">Utilizar filtro:</label>
-        <input type="checkbox" id="utilizar_filtro_4">
+        <input type="checkbox" id="utilizar_filtro_4" onclick="alert('Filtro sendo implementado. Ainda não está 100%, tente outros :)')">
         <br>
       </div>
       <br>
@@ -294,7 +302,23 @@
         <label for="utilizar_filtro_5">Utilizar filtro:</label>
         <input type="checkbox" id="utilizar_filtro_5">
         <br>
-      </div>      
+      </div>
+      <div class="filtro_unidade" id="filtro_unidade">
+        <label for="filtro_margem">Energia Disp. Diária:</label>
+        <br>
+        <select name="filtro_margem" id="filtro_margem">
+          <br>
+          <option value="1">0 - 1.5kWh</option>
+          <option value="2">1.5kWh - 3kWh</option>
+          <option value="3">3kWh - 4.5kWh</option>
+          <option value="4">4.5kWh - 6kWh</option>
+          <option value="5">6kWh - +</option>
+        </select>
+        <br>
+        <label for="utilizar_filtro_5">Utilizar filtro:</label>
+        <input type="checkbox" id="utilizar_filtro_6" onclick="alert('Filtro sendo implementado. Ainda não está 100%, tente outros :)')">
+        <br>
+      </div>  
       <div class="filtro_unidade" id="filtro_unidade">
         <br>
         <button type="button" id="botao_aplicar" onclick="aplicar_filtros()"> Aplicar Filtros </button>
@@ -742,7 +766,7 @@
 </script>
 
 <body>
-    <h1> (DEMONSTRAÇÃO) <br> SISTEMA DE RECOMENDAÇÃO DE KITS <br> V0.7.6 - NEOSOLAR <br>
+    <h1> VERSÃO 2 <br> DEMONSTRAÇÃO DOS FILTROS <br> V0.7.7 - NEOSOLAR <br>
         <br>
     </h1>
     <p> O sistema recebe como inputs a tensão de saída e a potência por parte do usuário, retornando os kits que mais se
