@@ -316,7 +316,7 @@
         </select>
         <br>
         <label for="utilizar_filtro_5">Utilizar filtro:</label>
-        <input type="checkbox" id="utilizar_filtro_6" onclick="alert('Filtro sendo implementado. Ainda não está 100%, tente outros :)')">
+        <input type="checkbox" id="utilizar_filtro_6">
         <br>
       </div>  
       <div class="filtro_unidade" id="filtro_unidade">
@@ -423,13 +423,16 @@
         var bool_filtro_4 = document.getElementById('utilizar_filtro_4');
         var valor_filtro_5 = document.getElementById('filtro_tipo_contr').value;
         var bool_filtro_5 = document.getElementById('utilizar_filtro_5');
+        var valor_filtro_6 = document.getElementById('filtro_margem').value;
+        var bool_filtro_6 = document.getElementById('utilizar_filtro_6');
         var lista_pos_filtro_1 = []
         var lista_pos_filtro_2 = []
         var lista_pos_filtro_3 = []
         var lista_pos_filtro_4 = []
         var lista_pos_filtro_5 = []
-        console.log([valor_filtro_1, valor_filtro_2, valor_filtro_3, valor_filtro_4, valor_filtro_5,
-            bool_filtro_1, bool_filtro_2, bool_filtro_3, bool_filtro_4, bool_filtro_5])
+        var lista_pos_filtro_6 = []
+        console.log([valor_filtro_1, valor_filtro_2, valor_filtro_3, valor_filtro_4, valor_filtro_5, valor_filtro_6,
+            bool_filtro_1, bool_filtro_2, bool_filtro_3, bool_filtro_4, bool_filtro_5, bool_filtro_6])
 
         if (bool_filtro_1.checked == true) {
             console.log("filtro 1 lido")
@@ -540,8 +543,54 @@
             lista_pos_filtro_5 = lista_pos_filtro_4
         }
 
+        if (bool_filtro_6.checked == true) {
+            console.log("filtro 6 lido")
+            var faixa1 = 0
+            var faixa2 = 100000
+            for (let i = 0; i < lista_pos_filtro_5.length; i++) {
+                if (valor_filtro_6 == "1"){
+                    faixa1 = 0
+                    faixa2 = 1500
+                    console.log("11111111111")
+                }
+                if (valor_filtro_6 == "2"){
+                    faixa1 = 1500
+                    faixa2 = 3000
+                    
+                }
+                if (valor_filtro_6 == "3"){
+                    faixa1 = 3000
+                    faixa2 = 4500
+                    
+                }
+                if (valor_filtro_6 == "4"){
+                    faixa1 = 4500
+                    faixa2 = 6000
+                    
+                }
+                if (valor_filtro_6 == "5"){
+                    faixa1 = 6000
+                    faixa2 = 100000
+                    
+                }
+
+                //console.log("FAIXA:", lista_pos_filtro_5[i][23])
+                if (lista_pos_filtro_5[i][23] > faixa1 && lista_pos_filtro_5[i][23] <= faixa2) {
+                    lista_pos_filtro_6.push(lista_pos_filtro_5[i])
+                }
+                else {
+
+                }
+            }
+
+        }
+        else {
+            // console.log("parte5")
+            lista_pos_filtro_6 = lista_pos_filtro_5
+        }
+
         lista_pos_filtro_4 = []
-        lista_pos_filtro_4 = lista_pos_filtro_5
+        lista_pos_filtro_4 = lista_pos_filtro_6
         // console.log(lista_pos_filtro_4 == dados)
 
         var codigo_html_resultado = ''
