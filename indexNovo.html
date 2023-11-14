@@ -229,7 +229,7 @@
         </select>
         <br>
         <label for="utilizar_filtro_1">Utilizar filtro:</label>
-        <input type="checkbox" id="utilizar_filtro_1" onclick="alert('Filtro sendo implementado. Ainda não está 100%, tente outros :)')">
+        <input type="checkbox" id="utilizar_filtro_1">
       </div>
       <br>
       <div class="filtro_unidade" id="filtro_unidade">
@@ -440,7 +440,9 @@
                 console.log("")
                 console.log(dados[i][3], valor_filtro_1)
                 if (dados[i][3].includes(valor_filtro_1[0]+valor_filtro_1[1]+valor_filtro_1[2]+valor_filtro_1[3]) == true) {
-                    lista_pos_filtro_1.push(dados[i])
+                    if (dados[i][3].includes(valor_filtro_1[5])){
+                        lista_pos_filtro_1.push(dados[i])
+                    }
                 }
                 else { }
             }
@@ -586,6 +588,8 @@
 
         }
         else {
+            var faixa1 = 0
+            var faixa2 = 100000
             // console.log("parte5")
             lista_pos_filtro_6 = lista_pos_filtro_5
         }
